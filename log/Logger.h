@@ -22,6 +22,9 @@ public:
     static void info(string message) {
         Logger::printLog(INFO, message);
     }
+    static void error(string message) {
+        Logger::printLog(ERROR, message);
+    }
 private:
     static void printLog(LogLevel level, string message) {
         auto now = chrono::system_clock::now();
