@@ -63,7 +63,7 @@ void Serial::writePort(const char* writeBuffer) {
     // system call write()
     int bytesWritten = 0;
     bytesWritten = write(this->fd, writeBuffer, sizeof(writeBuffer));
-    printf("%d bytes written\n", bytesWritten);
+    //printf("%d bytes written\n", bytesWritten);
 }
 
 void Serial::readPort(char* readBuffer) {
@@ -76,5 +76,5 @@ void Serial::readPort(char* readBuffer) {
     // system call read()
     int bytesRead = 0;
     bytesRead = read(this->fd, readBuffer, 30);
-    printf("%d bytes read\n", bytesRead);
+    //printf("%d bytes read\n", bytesRead);
 }
