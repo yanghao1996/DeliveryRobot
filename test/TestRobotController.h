@@ -9,13 +9,11 @@ void testRobotController() {
     char* writeBuffer = "hello";
     char* readBuffer  = new char[40];
 
-    robotController.writePort(writeBuffer);
+    robotController->sendCommand(writeBuffer);
 
-    robotController.readPort(readBuffer);
+    robotController->readMessage(readBuffer);
 
-    printf("%s", readBuffer);
-
-    robotController.closePort();
+    printf("%s\n", readBuffer);
 }
 
 #endif // TESTROBOTCONTROLLER_H

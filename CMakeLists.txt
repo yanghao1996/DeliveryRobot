@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES main.cpp 
                  #camera/Camera.h camera/Camera.cpp
+                 robot_control/Serial.h robot_control/Serial.cpp
                  robot_control/RobotController.h robot_control/RobotController.cpp
                  log/Logger.h log/Logger.cpp 
                  #map/Map.h map/Map.cpp
