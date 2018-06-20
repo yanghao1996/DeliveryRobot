@@ -6,14 +6,13 @@
 #include <unistd.h> /* UNIX Standard Definitions         */
 #include <errno.h>  /* ERROR Number Definitions          */
 
-const char* port = "/dev/ttyUSB0";
 
 class RobotController {
 private:
     int fd; // for opening port
     struct termios SerialPortSettings;
 public:
-    void openPort();
+    void openPort(const char* port);
     void closePort();
     void writePort(char* writeBuffer);
     void readPort(char* readBuffer);

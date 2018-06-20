@@ -9,15 +9,18 @@
 #include <termios.h>/* POSIX Terminal Control Definitions*/
 #include <unistd.h> /* UNIX Standard Definitions         */
 #include <errno.h>  /* ERROR Number Definitions          */
+#include <stdio.h>
 
-void RobotController::openPort() {
+void RobotController::openPort(const char* port) {
+	this->fd = 10000;
     this->fd = open(port, O_RDWR | O_NOCTTY);
-    if (this->fd == 0) {
-        Logger::info("Serial Port open success!");
+    if (this->fd < 0) {
+        Logger::error("Serial Port open failed!");
+        fprintf(stderr, "errno is %d\n", errno);
+        exit(1);
     }
     else {
-        Logger::error("Serial Port open failed!");
-        exit(1);
+		Logger::info("Serial Port open success!");
     }
     // bind fd with termios
     tcgetattr(fd, &(this->SerialPortSettings));
@@ -52,6 +55,7 @@ void RobotController::openPort() {
 
 void RobotController::closePort() {
     close(this->fd);
+    Logger::info("Serial Port closed");
 }
 
 void RobotController::writePort(char* writeBuffer) {
@@ -63,6 +67,7 @@ void RobotController::writePort(char* writeBuffer) {
     // system call write()
     int bytesWritten = 0;
     bytesWritten = write(this->fd, writeBuffer, sizeof(writeBuffer));
+    printf("%d bytes written\n", bytesWritten);
 }
 
 void RobotController::readPort(char* readBuffer) {
@@ -74,5 +79,7 @@ void RobotController::readPort(char* readBuffer) {
 
     // system call read()
     int bytesRead = 0;
-    bytesRead = read(this->fd, &readBuffer, 32);
+    bytesRead = read(this->fd, readBuffer, 30);
+    printf("%d bytes read\n", bytesRead);
+
 }
