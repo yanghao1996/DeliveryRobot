@@ -12,7 +12,7 @@ void Serial::openPort(const char* port) {
     this->fd = open(port, O_RDWR | O_NOCTTY);
     if (this->fd < 0) {
         Logger::error("Serial Port open failed!");
-        fprintf(stderr, "errno is %d\n", errno);
+        //fprintf(stderr, "errno is %d\n", errno);
         exit(1);
     }
     else {

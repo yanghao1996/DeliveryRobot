@@ -14,7 +14,7 @@ RobotController::~RobotController() {
 }
 
 void RobotController::setRotate(int angle) {
-    if (angle < -40 || angle > 40) {
+    if (abs(angle) != 60 && abs(angle) != 90) {
         Logger::error("invalid angle value!");
         exit(1);
     }
