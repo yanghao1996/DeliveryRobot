@@ -16,7 +16,7 @@ void Serial::openPort(const char* port) {
         exit(1);
     }
     else {
-		Logger::info("Serial Port open success!");
+		Logger::info("Serial Port opened success!");
     }
     // bind fd with termios
     tcgetattr(fd, &(this->SerialPortSettings));
@@ -63,7 +63,7 @@ void Serial::writePort(const char* writeBuffer) {
     // system call write()
     int bytesWritten = 0;
     bytesWritten = write(this->fd, writeBuffer, sizeof(writeBuffer));
-    //printf("%d bytes written\n", bytesWritten);
+    Logger::info(to_string(bytesWritten) + " bytes written: " + string(writeBuffer));
 }
 
 void Serial::readPort(char* readBuffer) {
@@ -76,5 +76,5 @@ void Serial::readPort(char* readBuffer) {
     // system call read()
     int bytesRead = 0;
     bytesRead = read(this->fd, readBuffer, 30);
-    //printf("%d bytes read\n", bytesRead);
+    Logger::info(to_string(bytesRead) + " bytes read: " + string(readBuffer));
 }

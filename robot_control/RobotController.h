@@ -2,6 +2,8 @@
 #define ROBOTCONTROLLER_H
 
 #include "Serial.h"
+#include <string>
+using namespace std;
 
 /* struct Command stores the commands sent to motor,
  * there are 2 modes, rotate and driving straight.
@@ -36,7 +38,7 @@ public:
      * - 1st: 0 for rotate, 1 for straight
      * - 2nd, 3rd: distance in hex, ranges from 1 to (F)16 
      */
-    const char* compile();
+    string compile();
     // send compiled command to serial
     void sendCommand(const char* command);
     // read message from serial

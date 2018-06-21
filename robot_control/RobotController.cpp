@@ -1,8 +1,6 @@
 #include "RobotController.h"
 #include "../log/Logger.h"
 #include <math.h>
-#include <string>
-using namespace std;
 
 RobotController::RobotController() {
     this->serial = new Serial();
@@ -29,12 +27,19 @@ void RobotController::setStraight(unsigned int distance) {
     }
     this->motorCommand.isRotate = false;
     this->motorCommand.distance = distance;
+    Logger::info("1" + to_string(this->motorCommand.distance));
 } 
 
-const char* RobotController::compile() {
-    string compiledStr = "000";
+string RobotController::compile() {
+    string compiledStr = "100";
     if (this->motorCommand.isRotate == false) {
-        compiledStr[0] = '1';
+        int secondNum = this->motorCommand.distance / 16;
+        compiledStr[1] = intToHexStr(secondNum);
+        int thirdNum = this->motorCommand.distance - 16 * secondNum;
+        compiledStr[2] = intToHexStr(thirdNum);
+    }
+    else {
+    	compiledStr[0] = '0';
         if(this->motorCommand.rotateAngle < 0) {
             compiledStr[1] = '1';
         }
@@ -42,13 +47,8 @@ const char* RobotController::compile() {
             compiledStr[2] = '1';
         }
     }
-    else {
-        int secondNum = this->motorCommand.distance / 16;
-        compiledStr[1] = intToHexStr(secondNum);
-        int thirdNum = this->motorCommand.distance - 16 * secondNum;
-        compiledStr[2] = intToHexStr(thirdNum);
-    }
-    return compiledStr.c_str();
+
+    return compiledStr;
 }
 
 void RobotController::sendCommand(const char* command) {
