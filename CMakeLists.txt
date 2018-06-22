@@ -12,6 +12,7 @@ set(SOURCE_FILES main.cpp
                  #robot/Robot.h robot/Robot.cpp
                  test/TestRobotController.h
                  test/TestCamera.h
+                 test/TestRobot.h
                  )
 add_executable(DeliveryRobot ${SOURCE_FILES})
 
