@@ -16,25 +16,25 @@ set(SOURCE_FILES main.cpp
 add_executable(DeliveryRobot ${SOURCE_FILES})
 
 
-# # libraries for linux
-# include_directories(
-#     /usr/local/include
-#     /home/horizon/桌面/librealsense/examples
-#     /home/horizon/桌面/librealsense/third-party
-# )
+# libraries for linux
+include_directories(
+    /usr/local/include
+    /home/horizon/桌面/librealsense/examples
+    /home/horizon/桌面/librealsense/third-party
+)
 
-# link_directories(/usr/local/lib)
+link_directories(/usr/local/lib)
 
-# find_library(
-#     RS2
-#     NAMES realsense2
-# )
+find_library(
+    RS2
+    NAMES realsense2
+)
 
-# find_library(
-#     GLFW
-#     NAMES glfw
-# )
+find_library(
+    GLFW
+    NAMES glfw
+)
 
-# set(EXTRA_LIBS ${RS2} ${GLFW})
+set(EXTRA_LIBS ${RS2} ${GLFW})
 
-# target_link_libraries(DeliveryRobot ${EXTRA_LIBS})
+target_link_libraries(DeliveryRobot ${EXTRA_LIBS})

@@ -31,6 +31,12 @@ public:
     // flash left, right edge distance and middle distance
     void flash();
 
+    // get distance by value(x-axis)
+    double getDistanceByVal(int xVal);
+
+    // get distance by rate
+    double getDistanceByRate(double rate);
+
     // angle ranges from -40 to 40
     double getDistanceByAngle(int angle);
 
