@@ -6,37 +6,24 @@
 #define CAMERA_H
 
 #include <librealsense2/rs.hpp>
+#include <math.h>
 
 static const double pi = 3.14159;
 static const double radianConstant = 180.0;
 static const double horizonalAngle = pi * 85.2 / radianConstant;
+static const double tanHalfHoriAngle = sin(horizonalAngle / 2) /
+                                       cos(horizonalAngle / 2);
 
 // given cos value, compute sin value
 double cos2sin(double cosVal);
 
 class Camera {
 private:
-    double outerLeftEdge;
-    double outerRightEdge;
-    double oppositeEdge;
-    double midDistance;
-    double cosLeftAngle;
-    double cosRightAngle;
-    double cosInnerLeftAngle;
-    double midLeftDistance;
+
     // RealSense library
     rs2::pipeline p;
 private:
 public:
-    // flash left, right edge distance and middle distance
-    void flash();
-
-    // get distance by value(x-axis)
-    double getDistanceByVal(int xVal);
-
-    // get distance by rate
-    double getDistanceByRate(double rate);
-
     // angle ranges from -40 to 40
     double getDistanceByAngle(int angle);
 
