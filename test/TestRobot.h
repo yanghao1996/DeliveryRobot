@@ -3,6 +3,7 @@
 
 #include "../map/Map.h"
 #include "../camera/Camera.h"
+#include "../robot/Robot.h"
 
 void testBuildMapWithoutRotate() {
     Map* worldMap = new Map();
@@ -24,6 +25,11 @@ void testBuildMapWithoutRotate() {
     }
     worldMap->savePGM();
     camera->stop();
+}
+
+void testBuildMap() {
+    Robot* robot = new Robot();
+    Robot->buildMap();
 }
 
 #endif // TESTROBOT_H
