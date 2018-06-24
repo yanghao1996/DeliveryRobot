@@ -9,7 +9,7 @@ set(SOURCE_FILES main.cpp
                  robot_control/RobotController.h robot_control/RobotController.cpp
                  log/Logger.h log/Logger.cpp 
                  map/Map.h map/Map.cpp
-                 #robot/Robot.h robot/Robot.cpp
+                 robot/Robot.h robot/Robot.cpp
                  test/TestRobotController.h
                  test/TestCamera.h
                  test/TestRobot.h

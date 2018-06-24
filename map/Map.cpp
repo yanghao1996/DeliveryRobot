@@ -4,7 +4,11 @@
 using namespace std;
 
 void Map::insertPoint(pair<int, int> point) {
-    this->sparseMap.insert(pair<pair<int, int>, bool>(point, true));
+	if (point.first >= -20 && point.first <= 20 &&
+		point.second >= -20 && point.second <= 20) {
+			
+    	this->sparseMap.insert(pair<pair<int, int>, bool>(point, true));
+    }
 }
 
 void Map::savePGM(string filepath) {

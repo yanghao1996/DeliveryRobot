@@ -31,10 +31,10 @@ double Camera::getDistanceByAngle(int angle){
     
     double xVal = 0;
     if (angle < 0) {
-        xVal = width / 2 - offset;
+        xVal = width / 2 + offset;
     }
     else {
-        xVal = width / 2 + offset;
+        xVal = width / 2 - offset;
     }
 
     return depth->get_distance(xVal, height / 2);
