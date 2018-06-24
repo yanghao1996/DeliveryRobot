@@ -19,11 +19,14 @@ double cos2sin(double cosVal);
 
 class Camera {
 private:
-
     // RealSense library
     rs2::pipeline p;
-private:
+    rs2::frameset frames;
+    rs2::depth_frame* depth;
 public:
+	// wait for one depth frame
+	void waitForDepthFrame();
+	
     // angle ranges from -40 to 40
     double getDistanceByAngle(int angle);
 
