@@ -22,7 +22,7 @@ void testBuildMapWithoutRotate() {
             x = distance * cos(i * pi / 180) * 10;
             y = distance * sin(i * pi / 180) * 10;
 
-            worldMap->insertPoint(pair<int, int>(x, y));
+            worldMap->insertPoint(Point{x, y});
         }
     }
     worldMap->savePGM();
@@ -62,7 +62,7 @@ void testBuildMapWithHumanforce() {
 
             // insert current point to worldMap
             cout<< xVal << "," << yVal<<endl;
-            worldMap->insertPoint(pair<int, int>(yVal, xVal));
+            worldMap->insertPoint(Point{yVal, xVal});
         }
         Logger::info("map for angle " + to_string(i*60) + " is built");
         
