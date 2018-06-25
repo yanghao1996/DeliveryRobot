@@ -39,7 +39,7 @@ void Robot::buildMap() {
             yVal = distance * sin(angle);
 
             // insert current point to worldMap
-            this->worldMap->insertPoint(pair<int, int>(yVal, xVal));
+            this->worldMap->insertPoint(Point{yVal, xVal});
         }
         Logger::info("map for angle " + to_string(i*60) + " is built");
         

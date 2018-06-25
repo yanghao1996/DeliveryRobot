@@ -13,7 +13,8 @@ bool operator==(const Point& lhs, const Point& rhs) {
 
 void Map::insertPoint(const Point& point) {
     if (point.x >= -mapSize/2 && point.x <= mapSize/2 &&
-            point.y >= -mapSize/2 && point.y <= mapSize/2) {
+            point.y >= -mapSize/2 && point.y <= mapSize/2 &&
+            	!(point.x == 0 && point.y == 0)) {
         this->sparseMap.insert(point);
     }
 }
