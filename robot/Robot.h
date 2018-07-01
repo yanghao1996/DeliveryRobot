@@ -5,9 +5,7 @@
 #include "../robot_control/RobotController.h"
 #include "../camera/Camera.h"
 #include "../map/Map.h"
-
-
-
+#include <list>
 
 class Robot {
 private:
@@ -18,6 +16,7 @@ public:
     Robot();
     ~Robot();
     void buildMap();
+    list<Point> aStarSearch(Point startPoint, Point endPoint);
 };
 
 #endif // ROBOT_H
